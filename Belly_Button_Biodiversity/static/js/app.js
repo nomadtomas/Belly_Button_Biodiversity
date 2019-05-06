@@ -14,7 +14,7 @@ function buildMetadata(sample) {
     // Hint: Inside the loop, you will need to use d3 to append new
     // tags for each key-value in the metadata.
     Object.entries(sampleData).forEach(([key, value]) => {
-      sample_metadata.append("h5").text(`BB_${key}: ${value}`);
+      sample_metadata.append("h5").text(`BB_${key}: BB_${value}`);
   })
 }
 )}
@@ -23,6 +23,7 @@ function buildMetadata(sample) {
 
 function buildGauge(data) {
   // Enter a speed between 0 and 180
+  d3.json(`/metadata/${data}`).then(function(data){
   console.log('data.!', data)
   let degree = parseInt(data.WFREQ) * (180/10);
 
@@ -92,7 +93,7 @@ function buildGauge(data) {
 
   Plotly.newPlot('gauge', trace, layout, {responsive: true});
 }
-
+  )}
 function buildCharts(sample) {
 
   // @TODO: Use `d3.json` to fetch the sample data for the plots
