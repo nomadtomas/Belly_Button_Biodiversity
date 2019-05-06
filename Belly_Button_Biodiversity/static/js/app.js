@@ -14,7 +14,7 @@ function buildMetadata(sample) {
     // Hint: Inside the loop, you will need to use d3 to append new
     // tags for each key-value in the metadata.
     Object.entries(sampleData).forEach(([key, value]) => {
-      sample_metadata.append("h5").text(`${key}: ${value}`);
+      sample_metadata.append("h5").text(`BB_${key}: ${value}`);
   })
 }
 )}
@@ -23,6 +23,7 @@ function buildMetadata(sample) {
 
 function buildGauge(data) {
   // Enter a speed between 0 and 180
+  console.log('data.!', data)
   let degree = parseInt(data.WFREQ) * (180/10);
 
   let level = degree;
